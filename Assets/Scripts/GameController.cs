@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private GameObject message, duck, canos, source;
+    [SerializeField] private GameObject menu, passaro, canos, source;
+    [SerializeField] private float intervaloCano;
     private bool starting;
 
     // Start is called before the first frame update
     void Start()
     {
         starting = true;
-        InvokeRepeating("SpawnCanos", 0f, 2f);
+        InvokeRepeating("SpawnCanos", 0f, intervaloCano);
     }
 
     // Update is called once per frame
@@ -19,8 +20,8 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && starting)
         {
-            Destroy(message);
-            duck.SetActive(true);
+            Destroy(menu);
+            passaro.SetActive(true);
             starting = false;
         }
     }
@@ -29,8 +30,10 @@ public class GameController : MonoBehaviour
     {
         if (!starting)
         {
+            Vector2 positionSource = source.transform.position;
+            positionSource.y = Random.Range(-2.5f, 2.5f);
             // metodo que instancia o prefab; o objeto, a posicao, a rotacao padrao do negocio
-            Instantiate(canos, source.transform.position, Quaternion.identity);
+            Instantiate(canos, positionSource, Quaternion.identity);
         }
     }
 }

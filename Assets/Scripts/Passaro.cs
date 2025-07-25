@@ -5,17 +5,20 @@ using UnityEngine;
 public class Passaro : MonoBehaviour
 {
     private bool flying;
-    private Rigidbody2D passaro;
+    private Rigidbody2D passaroRB;
+    private SpriteRenderer passaroSR;
+    [SerializeField] private Sprite passaroCima, passaroBaixo, passaroMeio;
 
     [SerializeField] private float velocidade;
-    [SerializeField] private GameObject gameOver;
+    [SerializeField] private GameObject GameOver;
 
 
     // Start is called before the first frame update
     void Start()
     {
         flying = false;
-        passaro = GetComponent<Rigidbody2D>();
+        passaroRB = GetComponent<Rigidbody2D>();
+        passaroSR = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -25,13 +28,29 @@ public class Passaro : MonoBehaviour
         {
             flying = true;
         }
+
+        if (passaroRB.velocity.y > 0)
+        {
+            passaroSR.sprite = passaroCima;
+            transform.rotation = Quaternion.Euler(0, 0, 30);
+        }
+        else if (passaroRB.velocity.y < 0)
+        {
+            passaroSR.sprite = passaroBaixo;
+            transform.rotation = Quaternion.Euler(0, 0, -30);
+        }
+        else
+        {
+            passaroSR.sprite = passaroMeio;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
     void FixedUpdate()
     {
         if (flying)
         {
-            passaro.velocity = Vector2.up * velocidade;
+            passaroRB.velocity = Vector2.up * velocidade;
             flying = false;
         }
     }
@@ -39,6 +58,6 @@ public class Passaro : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Time.timeScale = 0f;
-        gameOver.SetActive(true);
+        GameOver.SetActive(true);
     }
 }
