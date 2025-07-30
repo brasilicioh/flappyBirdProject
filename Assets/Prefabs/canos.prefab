@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3585988504104706216}
   - component: {fileID: 5160585863902602646}
   - component: {fileID: 2402598712333318690}
+  - component: {fileID: 4121852486805523845}
   m_Layer: 0
   m_Name: canos
   m_TagString: Cano
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidade: 6
+  gameController: {fileID: 0}
 --- !u!212 &2402598712333318690
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -100,6 +102,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &4121852486805523845
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2785754315994794517}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 15.812428, z: 1}
+  m_Center: {x: 0, y: 0.24630785, z: 0}
 --- !u!1 &4965325423982578919
 GameObject:
   m_ObjectHideFlags: 0
