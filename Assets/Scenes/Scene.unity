@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 85572011}
   - component: {fileID: 85572010}
   m_Layer: 0
-  m_Name: base
+  m_Name: baseBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,7 +298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &803100670
 Transform:
   m_ObjectHideFlags: 0
@@ -325,15 +325,30 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 844291869}
-  - component: {fileID: 844291868}
+  - component: {fileID: 844291870}
   m_Layer: 0
-  m_Name: background-day
+  m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!212 &844291868
+--- !u!4 &844291869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844291867}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1299, y: 0.1623, z: 0}
+  m_LocalScale: {x: 6.5014, y: 2.2556, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &844291870
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,32 +389,17 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 905a586946bd34122a382f81d75d69d8, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.88, y: 5.12}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &844291869
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844291867}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1299, y: 0.1623, z: 0}
-  m_LocalScale: {x: 6.5014, y: 2.2556, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1293771610
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 1293771613}
   - component: {fileID: 1293771612}
   m_Layer: 0
-  m_Name: base (1)
+  m_Name: baseUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,7 +623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1631052779}
-  - component: {fileID: 1631052778}
+  - component: {fileID: 1631052780}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -631,23 +631,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1631052778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631052777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 567087cf89e834bd7ab687dd7ca06382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 2099503196}
-  passaro: {fileID: 1906887306}
-  canos: {fileID: 2785754315994794517, guid: b6829a5d8e8b7b6479a4aea33bd54160, type: 3}
-  source: {fileID: 15059496}
-  intervaloCano: 1
 --- !u!4 &1631052779
 Transform:
   m_ObjectHideFlags: 0
@@ -663,6 +646,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1631052780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631052777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567087cf89e834bd7ab687dd7ca06382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 2099503196}
+  passaro: {fileID: 1906887306}
+  bases: {fileID: 803100669}
+  canos: {fileID: 2785754315994794517, guid: b6829a5d8e8b7b6479a4aea33bd54160, type: 3}
+  source: {fileID: 15059496}
+  intervaloCano: 1
+  background: {fileID: 844291870}
+  fundo1: {fileID: 21300000, guid: 905a586946bd34122a382f81d75d69d8, type: 3}
+  fundo2: {fileID: 21300000, guid: e092b0672c44945919b9f44c00798cc5, type: 3}
 --- !u!1 &1869485843
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +772,7 @@ GameObject:
   - component: {fileID: 1906887307}
   - component: {fileID: 1906887311}
   - component: {fileID: 1906887310}
+  - component: {fileID: 1906887312}
   m_Layer: 0
   m_Name: Passaro
   m_TagString: Untagged
@@ -787,11 +792,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841437bc2e52141ca9442de7d9c01115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passaroCima: {fileID: 21300000, guid: 2dd6fe131ef9f440c8529cda293d664c, type: 3}
-  passaroBaixo: {fileID: 21300000, guid: 1bf5d8f4f8d1c4641a4a74af6b8f83a7, type: 3}
-  passaroMeio: {fileID: 21300000, guid: 8f6130b4070554576b6edeec61aa22a8, type: 3}
   velocidade: 8
   GameOver: {fileID: 1597173710}
+  Score: 0
 --- !u!212 &1906887308
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -948,6 +951,27 @@ PolygonCollider2D:
       - {x: 0.13988361, y: 0.060953617}
       - {x: 0.08113713, y: 0.121807605}
   m_UseDelaunayMesh: 0
+--- !u!95 &1906887312
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906887306}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3de9aa385392c1e4684e3d60d9bb9598, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2099503196
 GameObject:
   m_ObjectHideFlags: 0
