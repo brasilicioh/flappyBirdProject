@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Jobs;
 
 public class Passaro : MonoBehaviour
 {
@@ -24,23 +25,21 @@ public class Passaro : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             flying = true;
         }
 
+        float rotacaoPassaro = 0f;
         if (passaroRB.velocity.y > 4)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 30);
+            rotacaoPassaro = 30f;
         }
         else if (passaroRB.velocity.y < -4)
         {
-            transform.rotation = Quaternion.Euler(0, 0, -30);
+            rotacaoPassaro = -30f;
         }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, rotacaoPassaro), Time.deltaTime * 10f);
     }
 
     void FixedUpdate()
@@ -55,6 +54,7 @@ public class Passaro : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameController.instance.GameOver();
+        Score = 0;
     }
 
     void OnTriggerExit2D(Collider2D collision)
