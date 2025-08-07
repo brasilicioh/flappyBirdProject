@@ -10,16 +10,11 @@ public class Passaro : MonoBehaviour
 
     [SerializeField] private float velocidade;
 
-    private int Score;
-
-
     // Start is called before the first frame update
     void Start()
     {
         flying = false;
         passaroRB = GetComponent<Rigidbody2D>();
-
-        Score = 0;
     }
 
     // Update is called once per frame
@@ -54,15 +49,13 @@ public class Passaro : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameController.instance.GameOver();
-        Score = 0;
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Cano"))
         {
-            Score += 1;
-            Debug.Log("score: " + Score);
+            GameController.instance.ModificarScore(1);
         }
     }
 }

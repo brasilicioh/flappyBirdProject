@@ -1,27 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
+
     [SerializeField] private GameObject menu, passaro, bases, canos, source, gameOver;
     [SerializeField] private float intervaloCano;
     [SerializeField] private SpriteRenderer background;
     [SerializeField] private Sprite fundo1, fundo2;
+    [SerializeField] private Text scoreText;
+
     private bool starting, perdeu;
     private Vector2 passaroStartPosition;
+    private int Score;
 
     // Start is called before the first frame update
     void Start()
     {
-        Sprite[] fundos = { fundo1, fundo2 };
+        DefinirFundo();
+        menu.SetActive(true);
+
         passaroStartPosition = passaro.transform.position;
+
         starting = true;
         perdeu = false;
+
         InvokeRepeating("SpawnCanos", 0f, intervaloCano);
-        background.sprite = fundos[Random.Range(0, fundos.Length)];
+
+        Score = 0;
     }
 
     // Update is called once per frame
@@ -50,6 +60,11 @@ public class GameController : MonoBehaviour
                 Destroy(cloneCano);
             }
             passaro.transform.position = passaroStartPosition;
+
+            ModificarScore(-Score);
+            Score = 0;
+
+            DefinirFundo();
         }
     }
 
@@ -63,12 +78,17 @@ public class GameController : MonoBehaviour
             Instantiate(canos, positionSource, Quaternion.identity);
         }
     }
-    
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -78,5 +98,17 @@ public class GameController : MonoBehaviour
         gameOver.SetActive(true);
         starting = false;
         perdeu = true;
+    }
+
+    public void ModificarScore(int aumento)
+    {
+        Score += aumento;
+        scoreText.text = Score.ToString();
+    }
+
+    public void DefinirFundo()
+    {
+        Sprite[] fundos = { fundo1, fundo2 };
+        background.sprite = fundos[Random.Range(0, fundos.Length)];
     }
 }
