@@ -100,10 +100,14 @@ public class GameController : MonoBehaviour
         perdeu = true;
     }
 
-    public void ModificarScore(int aumento)
+    public void ModificarScore(int modificacao)
     {
-        Score += aumento;
+        Score += modificacao;
         scoreText.text = Score.ToString();
+    }
+    public int GetScore()
+    {
+        return Score;
     }
 
     public void DefinirFundo()
