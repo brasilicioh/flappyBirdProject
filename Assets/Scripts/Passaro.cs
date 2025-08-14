@@ -9,6 +9,7 @@ public class Passaro : MonoBehaviour
     private Rigidbody2D passaroRB;
 
     [SerializeField] private float velocidade;
+    [SerializeField] private AudioClip somVoar, somPonto, somColidir;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,7 @@ public class Passaro : MonoBehaviour
     {
         if (flying)
         {
+            AudioController.instance.tocarAudio(somVoar);
             passaroRB.velocity = Vector2.up * velocidade;
             flying = false;
         }
@@ -48,6 +50,7 @@ public class Passaro : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        AudioController.instance.tocarAudio(somColidir);
         GameController.instance.GameOver();
     }
 
@@ -55,6 +58,7 @@ public class Passaro : MonoBehaviour
     {
         if (collision.CompareTag("Cano"))
         {
+            AudioController.instance.tocarAudio(somPonto);
             GameController.instance.ModificarScore(1);
         }
     }
