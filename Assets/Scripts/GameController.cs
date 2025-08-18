@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public static GameController instance;
 
 
-    [SerializeField] private GameObject menu, passaro, bases, canos, source, gameOver;
+    [SerializeField] private GameObject menu, passaro, bases, canos, source, gameOver, canvasText;
     [SerializeField] private float intervaloCano;
     [SerializeField] private SpriteRenderer background;
     [SerializeField] private Sprite fundo1, fundo2;
@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && starting)
         {
+            canvasText.SetActive(true);
             menu.SetActive(false);
             passaro.SetActive(true);
             bases.SetActive(true);
@@ -50,6 +51,7 @@ public class GameController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Return) && perdeu)
         {
+            canvasText.SetActive(false);
             menu.SetActive(true);
             gameOver.SetActive(false);
             bases.SetActive(false);
