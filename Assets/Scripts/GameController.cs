@@ -44,6 +44,8 @@ public class GameController : MonoBehaviour
             bases.SetActive(true);
             starting = false;
 
+            AudioController.instance.TocarMusicaFundo();
+
             Time.timeScale = 1f;
         }
         else if (Input.GetKeyDown(KeyCode.Return) && perdeu)

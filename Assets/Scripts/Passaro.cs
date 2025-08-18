@@ -5,7 +5,7 @@ using UnityEngine.Jobs;
 
 public class Passaro : MonoBehaviour
 {
-    private bool flying;
+    private bool flying, perdeu;
     private Rigidbody2D passaroRB;
 
     [SerializeField] private float velocidade;
@@ -42,7 +42,8 @@ public class Passaro : MonoBehaviour
     {
         if (flying)
         {
-            AudioController.instance.tocarAudio(somVoar);
+            perdeu = false;
+            AudioController.instance.TocarAudio(somVoar);
             passaroRB.velocity = Vector2.up * velocidade;
             flying = false;
         }
@@ -50,15 +51,17 @@ public class Passaro : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        AudioController.instance.tocarAudio(somColidir);
+        AudioController.instance.TocarAudio(somColidir);
         GameController.instance.GameOver();
+        AudioController.instance.PararMusicaFundo();
+        perdeu = true;
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Cano"))
+        if (collision.CompareTag("Cano") && !perdeu)
         {
-            AudioController.instance.tocarAudio(somPonto);
+            AudioController.instance.TocarAudio(somPonto);
             GameController.instance.ModificarScore(1);
         }
     }
